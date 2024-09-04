@@ -213,8 +213,11 @@ merge_plus <- function(data1, data2, by = NULL, by.x = NULL, by.y = NULL,
 
         variable_score <- variables_to_score[i]
         score_type_i <- score_settings[["score_type"]][i]
-        if (score_type_i == "in") {
+        if (score_type_i == "x_in_y") {
           matches[, c(variable_score) := fifelse(stringr::str_detect(get(variable_y), get(variable_x)), 1, 0)]
+        }
+        if (score_type_i == "y_in_x") {
+          matches[, c(variable_score) := fifelse(stringr::str_detect(get(variable_x), get(variable_y)), 1, 0)]
         }
         if (score_type_i == "indicator") {
           matches[, c(variable_score) := fifelse(get(variable_x) == get(variable_y) & !is.na(get(variable_x)) & !is.na(get(variable_y)), 1, 0)]
