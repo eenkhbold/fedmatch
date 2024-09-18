@@ -47,7 +47,7 @@ compare_row <- function(row_x, data2,
     variable_compare <- variables_to_compare[i]
     compare_type_i <- compare_type[i]
     if (compare_type_i == "in") {
-      df_c[, c(variable_compare) := fifelse(stringr::str_detect(get(variable_y), get(variable_x)|stringr::str_detect(get(variable_x), get(variable_y)), 1, 0)]
+      df_c[, c(variable_compare) := fifelse(stringr::str_detect(get(variable_y), get(variable_x))|stringr::str_detect(get(variable_x), get(variable_y)), 1, 0)]
     }
     if (compare_type_i == "x_in_y") {
       df_c[, c(variable_compare) := fifelse(stringr::str_detect(get(variable_y), get(variable_x)), 1, 0)]
