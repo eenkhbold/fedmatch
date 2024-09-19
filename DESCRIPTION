@@ -1,4 +1,4 @@
-Package: fedmatch
+Package: fedmatch_EE
 Title: Fast, Flexible, and User-Friendly Record Linkage Methods
 Version: 2.0.6
 Authors@R: c(person("Melanie", "Friedrichs", email = "melanie.r.friedrichs@gmail.com", role = c("aut")),
