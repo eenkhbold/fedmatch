@@ -65,6 +65,25 @@ calculate_weights <- function(data, variables, compare_type = "stringdist",
         ifelse(stringr::str_detect(
           data[, paste0(variable, suffixes[2])],
           data[, paste0(variable, suffixes[1])]
+        )|stringr::str_detect(
+          data[, paste0(variable, suffixes[2])],
+          data[, paste0(variable, suffixes[1])]
+        ), 1, 0)
+      ))
+    }
+    if (compare_type_i == "x_in_y") {
+      data[, variable] <- as.numeric(as.character(
+        ifelse(stringr::str_detect(
+          data[, paste0(variable, suffixes[2])],
+          data[, paste0(variable, suffixes[1])]
+        ), 1, 0)
+      ))
+    }
+    if (compare_type_i == "y_in_x") {
+      data[, variable] <- as.numeric(as.character(
+        ifelse(stringr::str_detect(
+          data[, paste0(variable, suffixes[1])],
+          data[, paste0(variable, suffixes[2])]
         ), 1, 0)
       ))
     }
@@ -88,7 +107,7 @@ calculate_weights <- function(data, variables, compare_type = "stringdist",
     }
 
     ## normalizing distance variables
-    if (compare_type_i == "in") {
+    if (compare_type_i %in% c("in","x_in_y","y_in_x"))) {
       data[, variable] <- data[, variable]
     }
     if (compare_type_i == "indicator") {
