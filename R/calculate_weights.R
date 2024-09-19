@@ -107,7 +107,7 @@ calculate_weights <- function(data, variables, compare_type = "stringdist",
     }
 
     ## normalizing distance variables
-    if (compare_type_i %in% c("in","x_in_y","y_in_x"))) {
+    if (compare_type_i %in% c("in","x_in_y","y_in_x")) {
       data[, variable] <- data[, variable]
     }
     if (compare_type_i == "indicator") {
